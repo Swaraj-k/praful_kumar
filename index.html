@@ -1,1 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praful Kumar — Product Operations Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --navy: #0a0f1e;
+    --navy2: #0d1528;
+    --accent: #e8a020;
+    --accent2: #f0b840;
+    --steel: #1e2a45;
+    --text: #e8eaf2;
+    --muted: #8892a4;
+    --border: #1e2d4a;
+    --card: #101828;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(10, 15, 30, 0.92);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.875rem;
+    font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent); color: var(--navy) !important;
+    padding: 8px 20px; border-radius: 4px; font-weight: 700 !important;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--accent2) !important; color: var(--navy) !important; }
+
+  /* ─── HERO ────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(232,160,32,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(30,42,69,0.8) 0%, transparent 60%),
+      linear-gradient(135deg, #0a0f1e 0%, #0d1528 100%);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 780px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,160,32,0.12);
+    border: 1px solid rgba(232,160,32,0.3);
+    color: var(--accent); padding: 6px 16px; border-radius: 30px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+  }
+  .hero-title .highlight { color: var(--accent); }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    max-width: 600px;
+  }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+  }
+  .stat { border-left: 3px solid var(--accent); padding-left: 1rem; }
+  .stat-num {
+    font-size: 1.8rem; font-weight: 800; color: var(--white);
+    line-height: 1.1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--navy);
+    padding: 14px 28px; border-radius: 5px;
+    font-weight: 700; font-size: 0.9rem;
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: all 0.3s; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232,160,32,0.3); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--text);
+    padding: 14px 28px; border-radius: 5px;
+    font-weight: 600; font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  /* ─── SECTIONS ────────────────────────── */
+  section { padding: 100px 5%; }
+
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--white); margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .section-line {
+    width: 60px; height: 3px; background: var(--accent); margin-bottom: 3rem;
+  }
+
+  /* ─── ABOUT ───────────────────────────── */
+  #about { background: var(--card); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted); margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.8;
+  }
+
+  .about-text strong { color: var(--white); font-weight: 600; }
+
+  .competencies { margin-top: 2rem; }
+  .comp-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+  .comp-tag {
+    background: rgba(232,160,32,0.1);
+    border: 1px solid rgba(232,160,32,0.2);
+    color: var(--accent);
+    padding: 5px 14px; border-radius: 3px;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .about-highlights { display: flex; flex-direction: column; gap: 1.5rem; }
+  .highlight-card {
+    background: var(--steel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    padding: 1.5rem;
+    border-radius: 4px;
+    transition: transform 0.3s;
+  }
+  .highlight-card:hover { transform: translateX(6px); }
+  .highlight-card h4 { color: var(--white); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .highlight-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+  /* ─── EXPERIENCE ──────────────────────── */
+  #experience { background: var(--navy); }
+
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+
+  .timeline-item { position: relative; margin-bottom: 3.5rem; }
+  .timeline-dot {
+    position: absolute; left: -2.45rem; top: 6px;
+    width: 14px; height: 14px;
+    background: var(--accent); border-radius: 50%;
+    border: 3px solid var(--navy);
+    box-shadow: 0 0 0 3px rgba(232,160,32,0.3);
+  }
+
+  .timeline-company {
+    font-size: 0.75rem; font-weight: 700;
+    color: var(--accent); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 0.3rem;
+  }
+
+  .timeline-role {
+    font-size: 1.15rem; font-weight: 700; color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-period {
+    font-size: 0.78rem; color: var(--muted);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .timeline-period i { font-size: 0.7rem; }
+
+  .timeline-achievements { list-style: none; }
+  .timeline-achievements li {
+    color: var(--muted); font-size: 0.88rem; line-height: 1.7;
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    position: relative;
+  }
+  .timeline-achievements li::before {
+    content: '▸'; position: absolute; left: 0;
+    color: var(--accent); font-size: 0.7rem; top: 0.45rem;
+  }
+  .timeline-achievements li strong { color: var(--text); }
+
+  /* ─── SKILLS ──────────────────────────── */
+  #skills { background: var(--card); }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+
+  .skill-card {
+    background: var(--steel);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.8rem;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::after {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+  .skill-card:hover { transform: translateY(-4px); border-color: rgba(232,160,32,0.3); }
+
+  .skill-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .skill-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-item {
+    background: rgba(255,255,255,0.05); color: var(--muted);
+    padding: 3px 10px; border-radius: 3px; font-size: 0.78rem;
+  }
+
+  /* ─── ACHIEVEMENTS ────────────────────── */
+  #achievements { background: var(--navy); }
+
+  .achievement-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+
+  .achievement-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 2rem;
+    transition: all 0.3s;
+  }
+  .achievement-card:hover { border-color: rgba(232,160,32,0.4); transform: translateY(-4px); }
+
+  .ach-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 800;
+    color: var(--accent); line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .achievement-card h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+  .achievement-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+  /* ─── CONTACT ─────────────────────────── */
+  #contact {
+    background: var(--card);
+    text-align: center;
+  }
+
+  .contact-intro {
+    color: var(--muted); font-size: 1.05rem;
+    max-width: 600px; margin: 0 auto 3rem;
+    line-height: 1.8;
+  }
+
+  .contact-cards {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-card {
+    background: var(--steel);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.8rem 2rem;
+    text-decoration: none; color: var(--text);
+    transition: all 0.3s;
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    min-width: 160px;
+  }
+  .contact-card:hover {
+    border-color: var(--accent); color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(232,160,32,0.15);
+  }
+  .contact-card i { font-size: 1.6rem; }
+  .contact-card span { font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+  .contact-card small { font-size: 0.75rem; color: var(--muted); }
+
+  .resume-download {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: var(--navy); padding: 16px 36px; border-radius: 6px;
+    font-weight: 800; font-size: 1rem; text-decoration: none;
+    letter-spacing: 0.5px; transition: all 0.3s;
+    box-shadow: 0 8px 24px rgba(232,160,32,0.35);
+  }
+  .resume-download:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(232,160,32,0.45);
+  }
+
+  /* ─── FOOTER ──────────────────────────── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid var(--border);
+    text-align: center; padding: 2rem 5%;
+    color: var(--muted); font-size: 0.8rem;
+  }
+
+  /* ─── SCROLL REVEAL ───────────────────── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ──────────────────────── */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    .nav-links { display: none; }
+    nav .btn-primary { padding: 8px 14px; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">PK<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="/Praful Kumar Resume.pdf" target="_blank" class="nav-cta"><i class="fas fa-download" style="margin-right:6px"></i>Resume</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-circle" style="font-size:8px"></i>
+      Available for New Opportunities
+    </div>
+    <h1 class="hero-title">
+      Praful<br><span class="highlight">Kumar</span>
+    </h1>
+    <p class="hero-subtitle">
+      Product Operations &amp; Technical Delivery Leader in Healthcare SaaS —
+      transforming complex clinical workflows into scalable, enterprise-grade solutions.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Hospitals Served</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">80–90%</div>
+        <div class="stat-label">Ticket Time Reduction</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">75%+</div>
+        <div class="stat-label">Backlog Cut</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        <i class="fas fa-envelope"></i> Get In Touch
+      </a>
+      <a href="#experience" class="btn-outline">
+        <i class="fas fa-briefcase"></i> View My Work
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <h2 class="section-title">About Me</h2>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a <strong>Product-oriented Operations Leader</strong> with 4+ years of hands-on experience optimizing enterprise SaaS delivery in the healthcare sector. Based in Delhi NCR and open to roles in Noida &amp; Gurgaon.</p>
+      <p>My strength lies in bridging the gap between engineering teams and enterprise clients — translating recurring user pain points into structured product inputs that drive measurable operational improvements.</p>
+      <p>At Timestream Technologies, I've led a cross-functional team managing SaaS operations for <strong>500+ hospitals across India</strong>, achieving an 80–90% reduction in ticket resolution time and cutting backlog volume by 75%+.</p>
+      <p>I thrive in high-stakes environments where speed, clarity, and client trust are non-negotiable — whether it's coordinating a major Version 3.0 product release or accelerating hospital go-live cycles by an entire week.</p>
+      <div class="competencies">
+        <p style="font-size:0.8rem;font-weight:700;color:var(--accent);letter-spacing:2px;text-transform:uppercase;">Core Competencies</p>
+        <div class="comp-grid">
+          <span class="comp-tag">Product Operations</span>
+          <span class="comp-tag">Sprint Prioritization</span>
+          <span class="comp-tag">SaaS Implementation</span>
+          <span class="comp-tag">QA & UAT</span>
+          <span class="comp-tag">KPI & SLA Ownership</span>
+          <span class="comp-tag">Workflow Optimization</span>
+          <span class="comp-tag">Stakeholder Management</span>
+          <span class="comp-tag">Team Leadership</span>
+          <span class="comp-tag">Process Improvement</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-highlights reveal">
+      <div class="highlight-card">
+        <h4><i class="fas fa-hospital-alt" style="color:var(--accent);margin-right:8px"></i>Enterprise Healthcare SaaS</h4>
+        <p>Strategic liaison between enterprise clients like Pristyn Care, HCAH Vitus Care, and Sahayog, and engineering teams — balancing scalability with client impact at national scale.</p>
+      </div>
+      <div class="highlight-card">
+        <h4><i class="fas fa-chart-line" style="color:var(--accent);margin-right:8px"></i>Data-Driven Improvement</h4>
+        <p>Track and act on KPIs including ticket frequency trends, resolution time patterns, and escalation ratios to continuously improve operational benchmarks.</p>
+      </div>
+      <div class="highlight-card">
+        <h4><i class="fas fa-users" style="color:var(--accent);margin-right:8px"></i>People & Process Leader</h4>
+        <p>Lead a 10+ member cross-functional team with a focus on structured prioritization frameworks, workflow redesign, and measurable SLA improvements.</p>
+      </div>
+      <div class="highlight-card">
+        <h4><i class="fas fa-graduation-cap" style="color:var(--accent);margin-right:8px"></i>Education</h4>
+        <p>Bachelor of Arts (Political Science) — Delhi University. Complemented by All India NFLAT Scholarship (2019) and national-level athletics recognition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career Journey</div>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="section-line"></div>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-company">Timestream Technologies Pvt. Ltd.</div>
+      <div class="timeline-role">Manager — Operations &amp; Product Coordination</div>
+      <div class="timeline-period"><i class="fas fa-calendar-alt"></i> July 2025 – Present</div>
+      <ul class="timeline-achievements">
+        <li>Lead a <strong>10-member cross-functional team</strong> managing SaaS operations for 500+ hospitals across India.</li>
+        <li>Reduced ticket resolution time by <strong>80–90%</strong> and backlog volume by <strong>75%+</strong> through structured prioritization frameworks.</li>
+        <li>Improved average handling time to <strong>15–25 minutes</strong> by redesigning workflow escalation processes.</li>
+        <li>Accelerated new hospital go-live cycles by <strong>1 week</strong> through optimized onboarding coordination.</li>
+        <li>Identified high-frequency workflow gaps contributing to recurring tickets and influenced sprint prioritization to reduce repeat issue volume.</li>
+        <li>Act as strategic liaison between enterprise clients (Pristyn Care, HCAH Vitus Care, Sahayog) and engineering teams.</li>
+        <li>Track performance KPIs including ticket frequency trends, resolution time patterns, and escalation ratios.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-company">Timestream Technologies Pvt. Ltd.</div>
+      <div class="timeline-role">QA &amp; Operations Lead</div>
+      <div class="timeline-period"><i class="fas fa-calendar-alt"></i> January 2024 – July 2025</div>
+      <ul class="timeline-achievements">
+        <li>Led end-to-end testing and cross-team coordination for <strong>NuvertOS HIMS Version 3.0</strong> release.</li>
+        <li>Identified system loopholes, usability gaps, and edge cases prior to production deployment.</li>
+        <li>Independently managed enterprise ticketing system serving <strong>500+ hospitals for 15 months</strong>.</li>
+        <li>Structured onboarding and UAT feedback loops to improve feature adoption and implementation quality.</li>
+        <li>Strengthened client relationships, generating new business opportunities through solution-driven engagement.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-company">Urbanite Creation</div>
+      <div class="timeline-role">Frontend Developer &amp; Operations Manager</div>
+      <div class="timeline-period"><i class="fas fa-calendar-alt"></i> January 2023 – December 2023</div>
+      <ul class="timeline-achievements">
+        <li>Delivered and optimized business websites improving user experience and conversion performance.</li>
+        <li>Executed data-driven marketing initiatives increasing campaign ROI.</li>
+        <li>Led recruitment, vendor negotiations, and financial reporting initiatives.</li>
+        <li>Streamlined operational workflows to improve project delivery efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-company">J.S. Infotech Institute</div>
+      <div class="timeline-role">Computer Teacher &amp; Capital Manager</div>
+      <div class="timeline-period"><i class="fas fa-calendar-alt"></i> August 2021 – December 2022</div>
+      <ul class="timeline-achievements">
+        <li>Managed institutional budgeting and operational planning.</li>
+        <li>Delivered technical training and digital literacy programs.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Technical &amp; Tools</h2>
+  <div class="section-line"></div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">⚙️</div>
+      <h3>Operations & Process</h3>
+      <div class="skill-list">
+        <span class="skill-item">Agile / Scrum</span>
+        <span class="skill-item">Sprint Planning</span>
+        <span class="skill-item">SLA Management</span>
+        <span class="skill-item">KPI Tracking</span>
+        <span class="skill-item">Escalation Handling</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🧪</div>
+      <h3>QA & Delivery</h3>
+      <div class="skill-list">
+        <span class="skill-item">UAT Leadership</span>
+        <span class="skill-item">Regression Testing</span>
+        <span class="skill-item">Edge Case Analysis</span>
+        <span class="skill-item">HIMS Testing</span>
+        <span class="skill-item">Release Coordination</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">💻</div>
+      <h3>Technical Tools</h3>
+      <div class="skill-list">
+        <span class="skill-item">Advanced Excel</span>
+        <span class="skill-item">Git</span>
+        <span class="skill-item">HTML / CSS / JS</span>
+        <span class="skill-item">Basic SQL</span>
+        <span class="skill-item">AI Productivity Tools</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🤝</div>
+      <h3>Leadership & Strategy</h3>
+      <div class="skill-list">
+        <span class="skill-item">Team Leadership (10+)</span>
+        <span class="skill-item">Stakeholder Mgmt</span>
+        <span class="skill-item">Vendor Negotiations</span>
+        <span class="skill-item">Cross-functional Coordination</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">🏥</div>
+      <h3>Domain Knowledge</h3>
+      <div class="skill-list">
+        <span class="skill-item">Healthcare SaaS</span>
+        <span class="skill-item">HIMS / EMR</span>
+        <span class="skill-item">Hospital Ops</span>
+        <span class="skill-item">Clinical Workflows</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">📊</div>
+      <h3>Analytics & Reporting</h3>
+      <div class="skill-list">
+        <span class="skill-item">Ticket Triage</span>
+        <span class="skill-item">Trend Analysis</span>
+        <span class="skill-item">Performance Dashboards</span>
+        <span class="skill-item">Root Cause Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">Milestones</div>
+  <h2 class="section-title">Selected Achievements</h2>
+  <div class="section-line"></div>
+  <div class="achievement-grid">
+    <div class="achievement-card reveal">
+      <div class="ach-num">500+</div>
+      <h3>Hospitals Under Management</h3>
+      <p>Single-handedly managed enterprise SaaS operations impacting over 500 hospitals nationwide for 15+ months.</p>
+    </div>
+    <div class="achievement-card reveal">
+      <div class="ach-num">v3.0</div>
+      <h3>Major Product Release</h3>
+      <p>Led coordination, QA, and delivery of NuvertOS HIMS Version 3.0 — a flagship healthcare information system update.</p>
+    </div>
+    <div class="achievement-card reveal">
+      <div class="ach-num">80%</div>
+      <h3>Faster Ticket Resolution</h3>
+      <p>Redesigned prioritization and escalation workflows, slashing average ticket resolution time by up to 90%.</p>
+    </div>
+    <div class="achievement-card reveal">
+      <div class="ach-num">🥇</div>
+      <h3>Zonal Gold & Bronze — Athletics</h3>
+      <p>Zonal Gold and Bronze Medalist in Athletics, reflecting the discipline and competitive drive that shapes my professional approach.</p>
+    </div>
+    <div class="achievement-card reveal">
+      <div class="ach-num">🎓</div>
+      <h3>NFLAT Scholarship 2019</h3>
+      <p>Recipient of the All India National Financial Literacy Assessment Test Scholarship, recognizing academic excellence.</p>
+    </div>
+    <div class="achievement-card reveal">
+      <div class="ach-num">1wk</div>
+      <h3>Faster Hospital Go-Live</h3>
+      <p>Reduced new hospital onboarding cycle time by an entire week through optimized coordination and implementation playbooks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">Get In Touch</h2>
+  <div class="section-line" style="margin:0 auto 2rem;"></div>
+  <p class="contact-intro">
+    I'm actively exploring new opportunities in Product Operations, SaaS Implementation, and Technical Delivery leadership. Open to roles in <strong style="color:var(--white)">Noida, Gurgaon, and Delhi NCR</strong>. Let's talk.
+  </p>
+
+  <div class="contact-cards">
+    <a href="mailto:kpraful362002@gmail.com" class="contact-card">
+      <i class="fas fa-envelope"></i>
+      <span>Email</span>
+      <small>kpraful362002@gmail.com</small>
+    </a>
+    <a href="tel:9971713877" class="contact-card">
+      <i class="fas fa-phone-alt"></i>
+      <span>Phone</span>
+      <small>+91 9971713877</small>
+    </a>
+    <a href="https://www.linkedin.com/in/praful-kumar-37404721a/" target="_blank" class="contact-card">
+      <i class="fab fa-linkedin-in"></i>
+      <span>LinkedIn</span>
+      <small>View Profile →</small>
+    </a>
+    <a href="https://in.indeed.com/" target="_blank" class="contact-card">
+      <i class="fas fa-briefcase"></i>
+      <span>Indeed</span>
+      <small>Job Profile →</small>
+    </a>
+  </div>
+
+  <a href="/Praful Kumar Resume.pdf" target="_blank" class="resume-download" >
+    <i class="fas fa-file-download" style="font-size:1.2rem"></i>
+    Download My Resume — PDF
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Praful Kumar · Delhi NCR · Designed &amp; built with precision.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
